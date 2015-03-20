@@ -1,4 +1,4 @@
-FROM ciyinhuang/kafka
+FROM ciyinhuang/ubuntu-kafka.zookeeper
 MAINTAINER ciyinhuang <ciyinhuang@gmail.com>
 
 ENV SBT_VERSION 0.13.7

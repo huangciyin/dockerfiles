@@ -1,6 +1,6 @@
 # Version 1.1
 
-FROM ciyinhuang/elasticsearch:latest
+FROM ciyinhuang/ubuntu-elasticsearch:latest
 
 MAINTAINER ciyinhuang <ciyinhuang@gmail.com>
 
