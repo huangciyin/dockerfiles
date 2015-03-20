@@ -14,9 +14,7 @@ ENV CATALINA_HOME /opt/tomcat
 RUN cd /opt; \
 	mkdir -p /opt/script; \
 	wget -O - https://archive.apache.org/dist/tomcat/tomcat-${TOMCAT_MAJOR_VERSION}/v${TOMCAT_MINOR_VERSION}/bin/apache-tomcat-${TOMCAT_MINOR_VERSION}.tar.gz \
-	| tar xzf - --strip-components=1 -C "/opt";
-RUN ls /opt; \
-    mv /opt/apache-tomcat* /opt/tomcat;
+	| tar xzf - --strip-components=1 -C "/opt/tomcat";
 
 ADD create_tomcat_admin_user.sh /opt/script/create_tomcat_admin_user.sh
 
