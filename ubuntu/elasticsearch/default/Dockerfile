@@ -1,6 +1,6 @@
 # Version 1.1
 
-FROM ciyinhuang/ubuntu-jdk-7
+FROM ciyinhuang/ubuntu-jdk:7
 MAINTAINER ciyinhuang <ciyinhuang@gmail.com>
 
 ENV ELASTICSEARCH_VERSION 1.4.4
