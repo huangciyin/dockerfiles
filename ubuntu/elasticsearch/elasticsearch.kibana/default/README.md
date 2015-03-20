@@ -1,4 +1,4 @@
-# DevDB Elasticsearch + Kibana
+# ciyinhuang Elasticsearch + Kibana
 
 Elasticsearch Kibana in a docker container for a fast throwaway environment.
 

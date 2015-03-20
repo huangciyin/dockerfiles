@@ -1,4 +1,4 @@
-# DevDB Redis
+# ciyinhuang Redis
 
 Redis in a docker container - for when you need a quick Redis deployment.
 

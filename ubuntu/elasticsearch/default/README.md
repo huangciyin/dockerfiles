@@ -1,4 +1,4 @@
-# DevDB Elasticsearch
+# ciyinhuang Elasticsearch
 
 Elasticsearch in a docker container - for when you need a quick ES node for development.
 
