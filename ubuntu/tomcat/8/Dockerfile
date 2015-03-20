@@ -1,4 +1,4 @@
-FROM ciyinhuang/ubuntu-base:latest
+FROM ciyinhuang/ubuntu-jdk:7
 MAINTAINER ciyinhuang <ciyinhuang@gmail.com>
 
 RUN apt-get update && \
