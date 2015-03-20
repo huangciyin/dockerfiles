@@ -1,0 +1,7 @@
+#!/bin/bash
+# Wait for Zookeeper to start up
+echo "Waiting for Zookeeper (15s) ..."
+sleep 15
+cd /opt/kafka
+echo "Starting Kafka ..."
+bin/kafka-server-start.sh config/server.properties
