@@ -4,29 +4,22 @@ Cassandra as a Docker container. For development use only.
 
 ### TL;DR
 
-Paste this into your terminal to start a 5 node cluster with OpsCenter:  
-
-```
-bash <(curl -sL http://bit.ly/docker-cassandra)
-```
-
-OR, if you don't trust the one-liner, here are its contents:
   
 ```
 #!/bin/bash
-docker pull ciyinhuang/opscenter:latest
-docker pull ciyinhuang/cassandra:latest
+docker pull ciyinhuang/ubuntu-opscenter:latest
+docker pull ciyinhuang/ubuntu-cassandra.ops:latest
 echo "Starting OpsCenter"
-docker run -d --name opscenter ciyinhuang/opscenter:latest
+docker run -d --name opscenter ciyinhuang/ubuntu-opscenter:latest
 sleep 10
 OPS_IP=$(docker inspect -f '{{ .NetworkSettings.IPAddress }}' opscenter)
 echo "Starting node cass1"
-docker run -d --name cass1 -e OPS_IP=$OPS_IP ciyinhuang/cassandra:latest
+docker run -d --name cass1 -P -e OPS_IP=$OPS_IP ciyinhuang/ubuntu-cassandra.ops:latest
 sleep 30
 SEED_IP=$(docker inspect -f '{{ .NetworkSettings.IPAddress }}' cass1)
 for name in cass{2..5}; do
   echo "Starting node $name"
-  docker run -d --name $name -e SEED=$SEED_IP -e OPS_IP=$OPS_IP ciyinhuang/cassandra:latest
+  docker run -d --name $name -e SEED=$SEED_IP -e OPS_IP=$OPS_IP -P ciyinhuang/ubuntu-cassandra.ops:latest
   sleep 30
 done
 echo "Registering cluster with OpsCenter"
@@ -54,8 +47,8 @@ Skip this section if you don't want to run OpsCenter.
 Pull the image and launch OpsCenter.  
   
 ```
-docker pull ciyinhuang/cassandra:latest
-docker run -d --name opscenter ciyinhuang/opscenter:latest
+docker pull ciyinhuang/ubuntu-cassandra.ops:latest
+docker run -d --name opscenter ciyinhuang/ubuntu-opscenter:latest
 ```
 
 Grab the OpsCenter IP:
@@ -68,7 +61,7 @@ OPS_IP=$(docker inspect -f '{{ .NetworkSettings.IPAddress }}' opscenter)
 Pull the image.  
   
 ```
-docker pull ciyinhuang/cassandra:latest
+docker pull ciyinhuang/ubuntu-cassandra.ops:latest
 ```
   
 Launch the node  
@@ -76,13 +69,13 @@ Launch the node
   - without OpsCenter:  
   
 ```
-docker run -d --name cass1 ciyinhuang/cassandra:latest
+docker run -d --name cass1 ciyinhuang/ubuntu-cassandra.ops:latest
 ```
   
   - with OpsCenter:  
   
 ```
-docker run -d --name cass1 -e OPS_IP=$OPS_IP ciyinhuang/cassandra:latest
+docker run -d --name cass1 -e OPS_IP=$OPS_IP ciyinhuang/ubuntu-cassandra.ops:latest
 ```
   
 Grab the seed node's IP using:  
@@ -105,7 +98,7 @@ Follow the single node setup to get the first node running and keep track of its
 ```
 for name in cass{2..5}; do
   echo "Starting node $name"
-  docker run -d --name $name -e SEED=$SEED_IP ciyinhuang/cassandra:latest
+  docker run -d --name $name -e SEED=$SEED_IP ciyinhuang/ubuntu-cassandra.ops:latest
   sleep 30
 done
 ```
@@ -115,7 +108,7 @@ done
 ```
 for name in cass{2..5}; do
   echo "Starting node $name"
-  docker run -d --name $name -e SEED=$SEED_IP -e OPS_IP=$OPS_IP ciyinhuang/cassandra:latest
+  docker run -d --name $name -e SEED=$SEED_IP -e OPS_IP=$OPS_IP ciyinhuang/ubuntu-cassandra.ops:latest
   sleep 30
 done
 ```
