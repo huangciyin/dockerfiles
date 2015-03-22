@@ -1,3 +1,5 @@
+#version 1.1
+
 FROM ciyinhuang/ubuntu-base
 MAINTAINER ciyinhuang <ciyinhuang@gmail.com>
 
@@ -12,13 +14,13 @@ RUN /data/install/atlassian-confluence-${CONFLUENCE_VERSION}-x64.bin -q -varfile
 
 RUN sh /data/install/install.sh
 
-RUN mkdir -p /etc/service/elasticsearch 
-COPY run /etc/service/elasticsearch/
+RUN mkdir -p /etc/service/confluence 
+COPY run /etc/service/confluence/
 
 # Use the default unprivileged account. This could be considered bad practice
 # on systems where multiple processes end up being executed by 'daemon' but
 # here we only ever run one process anyway.
-#USER daemon:daemon
+USER root
 
 # Expose default HTTP connector port.
 EXPOSE 8090

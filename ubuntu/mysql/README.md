@@ -69,7 +69,7 @@ Mounting the database file volume
 In order to persist the database data, you can mount a local folder from the host 
 on the container to store the database files. To do so:
 
-        docker run -d -v /data/mysql:/var/lib/mysql ciyinhuang/mysql /bin/bash -c "/usr/bin/mysql_install_db"
+        docker run -d -v /data/mysql:/var/lib/mysql ciyinhuang/mysql /bin/bash /etc/service/mysql/run"
 
 This will mount the local folder `/data/mysql` inside the docker in `/var/lib/mysql` (where MySQL will store the database files by default). `mysql_install_db` creates the initial database structure.
 
