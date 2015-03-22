@@ -1,4 +1,4 @@
-FROM ciyinhuang/ubuntu-base
+FROM ciyinhuang/ubuntu-jdk:7
 MAINTAINER ciyinhuang <ciyinhuang@gmail.com>
 
 ENV CASSANDRA_VERSION 2.1.3
