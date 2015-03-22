@@ -6,13 +6,16 @@ MAINTAINER ciyinhuang <ciyinhuang@gmail.com>
 ENV CONFLUENCE_VERSION 5.4.4
 ENV CONFLUENCE_HOME /opt/atlassian/confluence
 
+#RUN /usr/sbin/useradd --create-home --comment "Account for running Confluence" --shell /bin/bash confluence
+
 ADD install /data/install
 ADD http://www.atlassian.com/software/confluence/downloads/binary/atlassian-confluence-${CONFLUENCE_VERSION}-x64.bin /data/install/atlassian-confluence-${CONFLUENCE_VERSION}-x64.bin
 RUN chmod +x /data/install/atlassian-confluence-${CONFLUENCE_VERSION}-x64.bin
 
 RUN /data/install/atlassian-confluence-${CONFLUENCE_VERSION}-x64.bin -q -varfile /data/install/response.varfile
 
-RUN sh /data/install/install.sh
+RUN sh /data/install/install.sh; \
+	rm -rf /data/install/atlassian-confluence-${CONFLUENCE_VERSION}-x64.bin
 
 RUN mkdir -p /etc/service/confluence 
 COPY run /etc/service/confluence/
