@@ -16,6 +16,7 @@ ADD . /src
 RUN	\
 	cd /src; \
 	mv run /etc/service/kafka-manager; \
+	chmod +x /etc/service/kafka-manager/run; \
 	sbt clean dist; \
 	cd target/universal; \
 	unzip kafka-manager-1.0-SNAPSHOT.zip; \

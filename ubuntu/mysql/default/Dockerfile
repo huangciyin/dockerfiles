@@ -23,6 +23,7 @@ ADD import_sql.sh /script/import_sql.sh
 RUN chmod 755 /script/*.sh
 
 COPY run /etc/service/mysql/
+RUN chmod +x /etc/service/mysql/run
 
 # Exposed ENV
 ENV MYSQL_USER admin

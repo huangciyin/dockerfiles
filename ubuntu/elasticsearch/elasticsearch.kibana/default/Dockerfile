@@ -14,6 +14,7 @@ RUN \
 	| tar xzf - --strip-components=1 -C "/opt/kibana";
 
 COPY run /etc/service/kibana/
+RUN chmod +x /etc/service/kibana/run
 
 WORKDIR /opt/kibana
 

@@ -18,7 +18,8 @@ RUN sh /data/install/install.sh; \
 	rm -rf /data/install/atlassian-confluence-${CONFLUENCE_VERSION}-x64.bin
 
 RUN mkdir -p /etc/service/confluence 
-COPY run /etc/service/confluence/
+COPY run /etc/service/confluence/ \
+RUN chmod +x /etc/service/confluence/run;
 
 # Use the default unprivileged account. This could be considered bad practice
 # on systems where multiple processes end up being executed by 'daemon' but

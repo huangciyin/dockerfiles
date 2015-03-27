@@ -15,7 +15,8 @@ ADD	. /src
 RUN	\
 	cp /src/cassandra.yaml /opt/cassandra/conf/; \
     mkdir -p /etc/service/cassandra; \
-    cp /src/cassandra-run /etc/service/cassandra/run;
+    cp /src/cassandra-run /etc/service/cassandra/run; \
+    chmod +x /etc/service/cassandra/run
 
 # Expose ports
 EXPOSE 7199 7000 7001 9160 9042

@@ -20,6 +20,7 @@ RUN cd /opt; \
 ADD create_tomcat_admin_user.sh /opt/script/create_tomcat_admin_user.sh
 
 COPY run /etc/service/tomcat/
+RUN chmod +x /etc/service/tomcat/run
 
 EXPOSE 8080
 

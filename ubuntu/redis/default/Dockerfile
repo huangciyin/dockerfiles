@@ -22,6 +22,7 @@ RUN \
 COPY redis.conf /etc/
 
 COPY run /etc/service/redis/
+RUN chmod +x /etc/service/redis/run
 
 VOLUME ["/var/lib/redis"]
 

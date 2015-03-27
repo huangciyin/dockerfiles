@@ -11,8 +11,10 @@ RUN \
     | tar xzf - --strip-components=1 -C "/opt/kafka"
 
 COPY zk-run /etc/service/zookeeper/run
+RUN chmod +x /etc/service/zookeeper/run
 
 COPY kafka-run /etc/service/kafka/run
+RUN chmod +x /etc/service/kafka/run
 
 WORKDIR /opt/kafka
 

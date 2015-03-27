@@ -17,6 +17,7 @@ ADD	. /src
 RUN	\
   mkdir -p /etc/service/opscenter; \
   cp /src/run /etc/service/opscenter/; \
+  chmod +x /etc/service/opscenter/run; \
   ln -s /opt/opscenter/log /var/log/opscenter;
 
 # Expose ports
