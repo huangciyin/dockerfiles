@@ -19,6 +19,7 @@ RUN sh /data/install/install.sh; \
 
 RUN mkdir -p /etc/service/confluence 
 COPY run /etc/service/confluence/
+RUN chmod +x /etc/service/confluence/run
 
 # Use the default unprivileged account. This could be considered bad practice
 # on systems where multiple processes end up being executed by 'daemon' but

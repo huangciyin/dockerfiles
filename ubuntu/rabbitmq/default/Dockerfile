@@ -16,6 +16,7 @@ RUN chmod 400 /var/lib/rabbitmq/.erlang.cookie
 
 # Add scripts
 COPY run /etc/service/rabbitmq/
+RUN chmod +x /etc/service/rabbitmq/run
 
 ADD set_rabbitmq_password.sh /opt/script/set_rabbitmq_password.sh
 RUN chmod 755 /opt/script/*.sh
