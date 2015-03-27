@@ -12,7 +12,7 @@ RUN \
 	
 
 COPY run /etc/service/elasticsearch/
-RUN chmod +x /etc/service/kibana/run
+RUN chmod +x /etc/service/elasticsearch/run
 
 WORKDIR /opt/elasticsearch
 
