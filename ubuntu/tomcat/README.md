@@ -55,7 +55,7 @@ Setting a specific password for the admin account
 If you want to use a preset password instead of a random generated one, you can
 set the environment variable `TOMCAT_PASS` to your specific password when running the container:
 
-    docker run -d -p 8080:8080 -e TOMCAT_PASS="mypass" ciyinhuang/ubuntu-tomcat
+    docker run -d -p 8080:8080 -e TOMCAT_PASS="mypass" -v /data/tomcat/webapps:/opt/tomcat/webapps --name tomcat ciyinhuang/ubuntu-tomcat:8
 
 You can now test your deployment:
 

@@ -75,7 +75,7 @@ docker run -d --name cass1 ciyinhuang/ubuntu-cassandra.ops:latest
   - with OpsCenter:  
   
 ```
-docker run -d --name cass1 -e OPS_IP=$OPS_IP ciyinhuang/ubuntu-cassandra.ops:latest
+docker run -d --name cass1 -p 7199:7199 -p 7000:7000 -p  7001:7001 -p 9160:9160 -p 9042:9042 -e OPS_IP=$OPS_IP ciyinhuang/ubuntu-cassandra.ops:latest
 ```
   
 Grab the seed node's IP using:  
