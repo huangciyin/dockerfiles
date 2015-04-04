@@ -2,7 +2,7 @@
 FROM ciyinhuang/ubuntu-base:latest
 MAINTAINER ciyinhuang <ciyinhuang@gmail.com>
 
-ENV REDIS_VERSION 3.0.0-rc1
+ENV REDIS_VERSION 3.0.0
 
 # Install dependencies, build redis, copy binaries to /user/local/bin and clean up
 # all in a single step to keep the image size low
