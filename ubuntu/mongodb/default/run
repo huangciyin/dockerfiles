@@ -23,4 +23,3 @@ else
     rm $lockfile
     mongod --dbpath $db_path --repair && exec $cmd
 fi
-

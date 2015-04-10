@@ -58,8 +58,8 @@ You can now test your new admin password:
 Run MongoDB without password
 ----------------------------
 
-If you want run MongoDB without password you can set tge environment variable `AUTH` to specific if you want password or not when running the container:
+If you want run MongoDB with password you can set tge environment variable `AUTH` to specific if you want password or not when running the container:
 
-        docker run -d -p 27017:27017 -p 28017:28017 -e AUTH=no ciyinhuang/ubuntu-mongodb
+        docker run -d -p 27017:27017 -p 28017:28017 -e AUTH=yes ciyinhuang/ubuntu-mongodb
 
-By default is "yes".
+By default is "no".

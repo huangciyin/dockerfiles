@@ -2,19 +2,16 @@
 FROM ciyinhuang/ubuntu-base:latest
 MAINTAINER ciyinhuang <ciyinhuang@gmail.com>
 
-ENV MONGODB_VERSION 3.0
+ENV MONGODB_VERSION 3.0.2
 
-RUN echo "deb mirror://mirrors.ubuntu.com/mirrors.txt utopic main restricted universe multiverse \n\
-deb mirror://mirrors.ubuntu.com/mirrors.txt utopic-updates main restricted universe multiverse \n\
-deb mirror://mirrors.ubuntu.com/mirrors.txt utopic-backports main restricted universe multiverse \n\
-deb mirror://mirrors.ubuntu.com/mirrors.txt utopic-security main restricted universe multiverse" > /etc/apt/sources.list.d/all-mirrors.list
+RUN DEBIAN_FRONTEND=noninteractive && \
+    apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10 && \
+    echo 'deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen' | tee /etc/apt/sources.list.d/mongodb.list && \
+    apt-get update && \
+    apt-get install -y --force-yes mongodb-org=${MONGODB_VERSION} && \
+    service mongod stop
 
-RUN apt-get update && \
-    apt-get install -y mongodb pwgen && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
-    
-ENV AUTH yes
+ENV AUTH no
 
 # Add run scripts
 COPY run /etc/service/mongodb/
