@@ -9,9 +9,9 @@ RUN DEBIAN_FRONTEND=noninteractive && \
 
 # Ensure git is installed (used by strong-pm)
 # Create "strong-pm" user
-RUN npm install --unsafe-perm --global strongloop pm2 grunt bower npm-check-updates gulp strongloop/strong-pm#production \
-    && npm cache clean \
-    && useradd -ms /bin/bash strong-pm && \
+RUN npm install --unsafe-perm --global strongloop pm2 grunt bower gulp strongloop/strong-pm#production npm-check-updates && \
+    npm cache clean && \
+    useradd -ms /bin/bash strong-pm && \
 	npm cache clear && \
 	slc --version
 
