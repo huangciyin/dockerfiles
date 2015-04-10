@@ -1,10 +1,10 @@
 FROM ciyinhuang/ubuntu-nodejs:latest
 MAINTAINER ciyinhuang <ciyinhuang@gmail.com>
 
-ENV STRONGLOOP_VERSION 1.0
+ENV STRONGLOOP_VERSION 3.0.5
 
 RUN DEBIAN_FRONTEND=noninteractive && \
-	sudo apt-get update \
+	sudo apt-get update && \
 	sudo apt-get install git
 
 # Ensure git is installed (used by strong-pm)
