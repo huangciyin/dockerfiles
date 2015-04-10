@@ -1,4 +1,3 @@
 #!/bin/bash
 cd /opt/strongloop
-if [ -f start.sh ]; then
-	sh start.sh
+/usr/bin/sl-pm --base . --listen 8701
