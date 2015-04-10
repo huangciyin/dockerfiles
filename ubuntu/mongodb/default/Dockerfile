@@ -15,7 +15,7 @@ RUN apt-get update  \
              mongodb-org-shell=${MONGODB_VERSION} \ 
              mongodb-org-mongos=${MONGODB_VERSION} \
              mongodb-org-tools=${MONGODB_VERSION} \
-             service mongod stop
+    && service mongod stop
 
 ENV AUTH no
 
