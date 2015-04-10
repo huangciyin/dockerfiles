@@ -4,12 +4,18 @@ MAINTAINER ciyinhuang <ciyinhuang@gmail.com>
 
 ENV MONGODB_VERSION 3.0.2
 
-RUN DEBIAN_FRONTEND=noninteractive && \
-    apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10 && \
-    echo 'deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen' | tee /etc/apt/sources.list.d/mongodb.list && \
-    apt-get update && \
-    apt-get install -y --force-yes mongodb-org=${MONGODB_VERSION} && \
-    service mongod stop
+# install mongodb and start it
+RUN DEBIAN_FRONTEND=noninteractive && \ 
+	apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10
+RUN echo 'deb http://repo.mongodb.org/apt/ubuntu trusty/mongodb-org/3.0 multiverse' | sudo tee /etc/apt/sources.list.d/mongodb-org-3.0.list
+
+RUN apt-get update  \ 
+    && apt-get install -y mongodb-org=${MONGODB_VERSION} \ 
+             mongodb-org-server=${MONGODB_VERSION} \ 
+             mongodb-org-shell=${MONGODB_VERSION} \ 
+             mongodb-org-mongos=${MONGODB_VERSION} \
+             mongodb-org-tools=${MONGODB_VERSION} \
+             service mongod stop
 
 ENV AUTH no
 
